@@ -84,7 +84,39 @@ def lvl():
 
         finally:
             driver.quit() 
+    
+    @client.command(aliases = ['MiniBoss','miniboss'])
+    async def Miniboss(ctx,lv):
+        PATH = "chromedriver.exe"
+        driver = webdriver.Chrome(PATH)
+        driver.get("https://coryn.club")
+        print(driver.title)
+        lv=lv
+        search = driver.find_element_by_name("lv")
+        search.send_keys(lv)
+        search.send_keys(Keys.RETURN)
 
+        try:
+            l = []
+            aa = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,"/html/body/div[2]/div[2]/div[3]/div[1]")))
+            a = aa.text
+            bb = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,"/html/body/div[2]/div[2]/div[3]/div[2]")))
+            b = bb.text
+            cc = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,"/html/body/div[2]/div[2]/div[3]/div[3]")))
+            c = cc.text
+            dd = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,"/html/body/div[2]/div[2]/div[3]/div[4]")))
+            d = dd.text
+            l.append(a)
+            l.append(b)
+            l.append(c)
+            l.append(d)
+            listToStr = ' \n\n '.join([str(elem) for elem in l])  
+            embed = discord.Embed(description = "" , color = discord.Colour.red())
+            embed.add_field(name = f"Minibosse's for {Miniboss} lvling at Lvl {lv} are:",value = listToStr)
+            await ctx.send(embed=embed)
+
+        finally:
+            driver.quit() 
             
 lvl()            
 rem()
