@@ -117,6 +117,11 @@ def lvl():
 
         finally:
             driver.quit() 
+
+@client.command(asliases = ['helpitem','HelpItem'])
+async def Helpitem(ctx):
+        embed = discord.Embed(title = Helpitem, description = "underconstruction", color = discord.Colour.red())
+        await ctx.send(embed=embed)
             
 lvl()            
 rem()
