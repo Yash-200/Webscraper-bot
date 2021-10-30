@@ -19,6 +19,12 @@ client.remove_command ('help')
 @client.event
 async def on_ready():
     print("Bot is ready")
+
+@client.command(aliases = ['h','help'])
+async def Help(ctx):
+    embed = discord.Embed(title = Help, description = "Enter >Helpxtal to get help for Xtal Commands\nEnter >Helpremainder to get help for Remainder Commands\nEnter >Helplvl to get get help for Lvling command", color = discord.Colour.red())
+    await ctx.send(embed=embed)
+
 def rem():
     @client.command(asliases = ['helpremainder','HelpRemainder'])
     async def Helpremainder(ctx):
