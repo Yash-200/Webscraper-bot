@@ -38,4 +38,11 @@ def rem():
             await s(600*time)
             embed = discord.Embed(title = Remainder, description = f"{msg},{ctx.author.mention}", color = discord.Colour.red())
             await ctx.send(embed=embed)
+    
+    @client.command(aliases = ['MinRemainder','minremainder','Minremainder','MinuteRemainder','minuteremainder'])
+    async def Minuteremainder(ctx, time: int,*,msg):
+        while True:
+            await s(60*time)
+            embed = discord.Embed(title = Minuteremainder, description = f"{msg},{ctx.author.mention}", color = discord.Colour.red())
+            await ctx.send(embed=embed)
 rem()
